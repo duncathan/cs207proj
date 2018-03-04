@@ -50,20 +50,31 @@
 CGamecubeConsole Console(DATA); //creates a virtual console sending and receiving data to/from the DATA pin
 Gamecube_Data_t data = defaultGamecubeData; //initializes the data struct which is sent to console
 
-int testing = UNPUSHED;
-
 /********LOGIC********/
 void setup() {
 	int controllerInputs[] = {A, B, X, Y, Z, START, L, R, R_ANALOG, LEFT, RIGHT, UP, DOWN, C_LEFT, C_RIGHT, C_UP, C_DOWN, X_AXIS_1, X_AXIS_2, Y_AXIS_1, Y_AXIS_2};
 	for(int i = 0; i < (sizeof(controllerInputs) / sizeof(int)); i++) {
 		pinMode(controllerInputs[i], INPUT_PULLUP);
 	}
+
+	//used for debugging
+	pinMode(LED_BUILTIN, OUTPUT);
+	Serial.begin(9600);
 }
 
 void loop() {
-	//put your main code here, to run repeatedly:
+	static int testing = UNPUSHED;
 	data.report.start = ++testing;
-	testing %= 2;
-	Console.write(data);
-	delay(1000/60); //one frame at 60fps
+    testing %= 2;
+
+	if(!Console.write(data)) {
+		//uh oh, something went wrong
+		Serial.println(F("Error writing data to console!")); //if i ever have this plugged into USB while debugging
+		digitalWrite(LED_BUILTIN, HIGH); //the real useful stuff, flash the LED if something goes wrong
+		delay(1000); //this delay is important in case the error occurs at the very beginning of write() and we miss its inherent delay
+		digitalWrite(LED_BUILTIN, LOW);
+	}
+
+	//when successful, write() has a delay so we do not need an additional one
+	//in fact, adding a delay after a succesful write will lead to undesirable behavior, namely an unresponsive controller
 }
