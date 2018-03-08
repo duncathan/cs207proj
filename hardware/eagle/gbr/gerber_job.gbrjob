@@ -1,0 +1,13 @@
+G04 Gerber job file.*
+%TF.FileFunction,JobInfo*%
+%TF.GenerationSoftware,Autodesk,EAGLE,8.6.0*%
+%TF.CreationDate,2018-03-06T10:54:34Z*%
+%TF.Part,Single*%
+%MOMM*%
+%TJ.B_Owner,Dunc Graham <graham6d@uregina.ca>*%
+%TJ.B_ID,sboxs*%
+%TJ.B_LayerNum,2*%
+%TJ.B_Thickness,1.570000*%
+%TJ.B_Size_X,39.370000*%
+%TJ.B_Size_Y,57.150000*%
+M02*
