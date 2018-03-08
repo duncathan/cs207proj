@@ -4974,7 +4974,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="7-GND" library="solpad" library_urn="urn:adsk.eagle:library:364" deviceset="LSP10" device="" package3d_urn="urn:adsk.eagle:package:26501/1"/>
 <part name="LGC" library="solpad" library_urn="urn:adsk.eagle:library:364" deviceset="LSP10" device="" package3d_urn="urn:adsk.eagle:package:26501/1"/>
 <part name="BTN-GND" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="1,6/0,8" device="" package3d_urn="urn:adsk.eagle:package:30830/1"/>
-<part name="U1" library="txs0101" deviceset="TXS0101_DBV_6" device=""/>
+<part name="TTL" library="txs0101" deviceset="TXS0101_DBV_6" device=""/>
 <part name="R-OE" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0207/12" package3d_urn="urn:adsk.eagle:package:25938/1" value="200 Ω"/>
 <part name="R-DATA" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0207/12" package3d_urn="urn:adsk.eagle:package:25938/1" value="1 kΩ"/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
@@ -5015,7 +5015,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <instance part="7-GND" gate="1" x="12.7" y="124.46"/>
 <instance part="LGC" gate="1" x="20.32" y="104.14"/>
 <instance part="BTN-GND" gate="P" x="55.88" y="154.94" rot="R270"/>
-<instance part="U1" gate="A" x="-15.24" y="35.56"/>
+<instance part="TTL" gate="A" x="-15.24" y="35.56"/>
 <instance part="R-OE" gate="G$1" x="-7.62" y="45.72"/>
 <instance part="R-DATA" gate="G$1" x="17.78" y="78.74"/>
 <instance part="P+1" gate="1" x="0" y="116.84"/>
@@ -5211,7 +5211,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <wire x1="12.7" y1="111.76" x2="12.7" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="12.7" y1="78.74" x2="12.7" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="12.7" y1="50.8" x2="-22.86" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U1" gate="A" pin="A"/>
+<pinref part="TTL" gate="A" pin="A"/>
 <wire x1="-22.86" y1="50.8" x2="-22.86" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="-22.86" y1="30.48" x2="-15.24" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="R-DATA" gate="G$1" pin="1"/>
@@ -5220,7 +5220,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </net>
 <net name="N$29" class="0">
 <segment>
-<pinref part="U1" gate="A" pin="B"/>
+<pinref part="TTL" gate="A" pin="B"/>
 <wire x1="45.72" y1="30.48" x2="45.72" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="12.7" x2="142.24" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="12.7" x2="142.24" y2="43.18" width="0.1524" layer="91"/>
@@ -5230,7 +5230,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </net>
 <net name="N$30" class="0">
 <segment>
-<pinref part="U1" gate="A" pin="OE"/>
+<pinref part="TTL" gate="A" pin="OE"/>
 <wire x1="45.72" y1="33.02" x2="48.26" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="33.02" x2="48.26" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="45.72" x2="-2.54" y2="45.72" width="0.1524" layer="91"/>
@@ -5267,7 +5267,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <junction x="15.24" y="121.92"/>
 <pinref part="BTN-GND" gate="P" pin="P"/>
 <wire x1="55.88" y1="152.4" x2="55.88" y2="139.7" width="0.1524" layer="91"/>
-<pinref part="U1" gate="A" pin="GND"/>
+<pinref part="TTL" gate="A" pin="GND"/>
 <wire x1="-15.24" y1="33.02" x2="-20.32" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="-20.32" y1="33.02" x2="-20.32" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="-20.32" y1="45.72" x2="-20.32" y2="53.34" width="0.1524" layer="91"/>
@@ -5306,7 +5306,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <wire x1="48.26" y1="127" x2="48.26" y2="124.46" width="0.1524" layer="91"/>
 <junction x="48.26" y="127"/>
 <junction x="48.26" y="124.46"/>
-<pinref part="U1" gate="A" pin="VCCB"/>
+<pinref part="TTL" gate="A" pin="VCCB"/>
 <wire x1="45.72" y1="35.56" x2="45.72" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="109.22" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
 <junction x="43.18" y="109.22"/>
@@ -5322,7 +5322,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <wire x1="20.32" y1="101.6" x2="20.32" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="99.06" x2="20.32" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="88.9" x2="-17.78" y2="88.9" width="0.1524" layer="91"/>
-<pinref part="U1" gate="A" pin="VCCA"/>
+<pinref part="TTL" gate="A" pin="VCCA"/>
 <wire x1="-17.78" y1="88.9" x2="-17.78" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="-17.78" y1="35.56" x2="-15.24" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="R-DATA" gate="G$1" pin="2"/>
