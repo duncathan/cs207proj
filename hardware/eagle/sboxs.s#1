@@ -5464,6 +5464,18 @@ Source: www.mpe-connector.de / garry_shortform_2012.pdf</description>
 <wire x1="144.78" y1="40.64" x2="137.16" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$25" class="0">
+<segment>
+<pinref part="PRGM" gate="-5" pin="S"/>
+<wire x1="144.78" y1="30.48" x2="144.78" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="10.16" x2="43.18" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="10.16" x2="43.18" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="106.68" x2="48.26" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="106.68" x2="48.26" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="MICRO" gate="A" pin="~RESET"/>
+<wire x1="48.26" y1="111.76" x2="50.8" y2="111.76" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
