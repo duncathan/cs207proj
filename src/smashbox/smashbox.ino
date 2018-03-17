@@ -77,19 +77,10 @@ void setup() {
 }
 
 //gamecube reads values 1 and 0, not true and false
-//this function encodes the value of a pin into a gamecube-readable format
-int readButton(int pin) {
-	return (digitalRead(pin) == LOW ? 1 : 0);
-}
+//this macro encodes the value of a pin into a gamecube-readable format
+#define readButton(pin) (digitalRead(pin) == LOW ? 1 : 0)
 
 void loop() {
-	//data = defaultGamecubeData; //reset all values to default so that the previous cycle's inputs do not carry over
-	/*
-	static int testing = UNPUSHED;
-	data.report.start = ++testing;
-    testing %= 2;
-	*/
-
 	/********CONTROL STICK********/
 	data.report.xAxis = STICK_NEUTRAL;
 	if(readButton(LEFT) != readButton(RIGHT)) { //both at the same time is considered neutral
@@ -120,10 +111,10 @@ void loop() {
 	/********C STICK********/
 	data.report.cxAxis = STICK_NEUTRAL;
 	data.report.cyAxis = STICK_NEUTRAL;
-	if(readButton(C_LEFT) && !readButton(C_RIGHT)) data.report.cxAxis = STICK_MIN
-	if(!readButton(C_LEFT) && readButton(C_RIGHT)) data.report.cxAxis = STICK_MAX
-	if(readButton(C_UP) && !readButton(C_DOWN))    data.report.cyAxis = STICK_MAX
-	if(!readButton(C_UP) && readButton(C_DOWN))    data.report.cyAxis = STICK_MIN
+	if(readButton(C_LEFT) && !readButton(C_RIGHT)) data.report.cxAxis = STICK_MIN;
+	if(!readButton(C_LEFT) && readButton(C_RIGHT)) data.report.cxAxis = STICK_MAX;
+	if(readButton(C_UP) && !readButton(C_DOWN))    data.report.cyAxis = STICK_MAX;
+	if(!readButton(C_UP) && readButton(C_DOWN))    data.report.cyAxis = STICK_MIN;
 
 	/********FACE BUTTONS********/
 	data.report.a = readButton(A);
@@ -141,10 +132,10 @@ void loop() {
 
 	/********D-PAD********/
 	//the modifier buttons double as the D-Pad when a switch on the controller is toggled
-	data.report.dleft  = readButton(D_PAD) & readButton(X_AXIS_1);
-	data.report.dright = readButton(D_PAD) & readButton(Y_AXIS_2);
-	data.report.dup    = readButton(D_PAD) & readButton(Y_AXIS_1);
-	data.report.ddown  = readButton(D_PAD) & readButton(X_AXIS_2);
+	data.report.dleft  = readButton(D_PAD) && readButton(X_AXIS_1);
+	data.report.dright = readButton(D_PAD) && readButton(Y_AXIS_2);
+	data.report.dup    = readButton(D_PAD) && readButton(Y_AXIS_1);
+	data.report.ddown  = readButton(D_PAD) && readButton(X_AXIS_2);
 
 
 	if(!Console.write(data)) {
