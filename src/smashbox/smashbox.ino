@@ -60,6 +60,9 @@
 
 #define ANALOG_SHOULDER 74
 
+#define SHIELD_DROP_X 80
+#define SHIELD_DROP_Y 78
+
 /********GLOBALS********/
 CGamecubeConsole Console(DATA); //creates a virtual console sending and receiving data to/from the DATA pin
 Gamecube_Data_t data = defaultGamecubeData; //initializes the data struct which is sent to console
@@ -82,7 +85,7 @@ void setup() {
 
 void loop() {
 	/********CONTROL STICK********/
-	data.report.xAxis = STICK_NEUTRAL;
+	int xval = STICK_NEUTRAL;
 	if(readButton(LEFT) != readButton(RIGHT)) { //both at the same time is considered neutral
 		int sign = (readButton(LEFT) ? -1 : +1); //subtract modifiers if inputting left; add modifiers if inputting right
 		int mod = 0;
@@ -92,10 +95,10 @@ void loop() {
 		if(mod == X_MOD_1 + X_MOD_2) mod = X_MOD_BOTH;
 		else if(mod == 0)            mod = X_MOD_NONE;
 
-		data.report.xAxis += mod * sign;
+		xval += mod * sign;
 	}
 
-	data.report.yAxis = STICK_NEUTRAL;
+	int yval = STICK_NEUTRAL;
 	if(readButton(UP) != readButton(DOWN)) { //same logic as L/R
 		int sign = (readButton(UP) ? +1 : -1);
 		int mod = 0;
@@ -105,8 +108,9 @@ void loop() {
 		if(mod == Y_MOD_1 + Y_MOD_2) mod = Y_MOD_BOTH;
 		else if(mod == 0)            mod = Y_MOD_NONE;
 
-		data.report.yAxis += mod * sign;
+		yval += mod * sign;
 	}
+
 
 	/********C STICK********/
 	data.report.cxAxis = STICK_NEUTRAL;
@@ -129,6 +133,21 @@ void loop() {
 	data.report.r = readButton(R);
 	data.report.z = readButton(Z);
 	data.report.right = (readButton(R_ANALOG) ? ANALOG_SHOULDER : 0);
+
+	/********SHIELD DROPS********/
+	if(yval == STICK_NEUTRAL - STICK_MOD_NONE) { //holding down with no Y modifiers
+		if(xval == STICK_NEUTRAL + STICK_MOD_NONE) { //holding right with no X modifiers
+			xval = STICK_NEUTRAL + SHIELD_DROP_X;
+			yval = STICK_NEUTRAL - SHIELD_DROP_Y;
+		}
+		else
+		if(xval == STICK_NEUTRAL - STICK_MOD_NONE) { //holding left with no X modifiers
+			xval = STICK_NEUTRAL - SHIELD_DROP_X;
+			yval = STICK_NEUTRAL - SHIELD_DROP_Y;
+		}
+	}
+	data.report.xAxis = xval;
+	data.report.yAxis = yval;
 
 	/********D-PAD********/
 	//the modifier buttons double as the D-Pad when a switch on the controller is toggled
